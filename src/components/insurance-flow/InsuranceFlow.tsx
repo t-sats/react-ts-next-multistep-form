@@ -1,4 +1,7 @@
 import React from "react";
+import { FormProvider } from "@/context/FormContext";
+import CarInsuranceForm from "@/components/insurance-flow/CarInsuranceForm";
+import PetInsuranceForm from "@/components/insurance-flow/PetInsuranceForm";
 
 interface InsuranceFlowProps {
   productId: ProductIds;
@@ -23,10 +26,14 @@ const InsuranceFlow = ({productId} : InsuranceFlowProps) => {
       </h4>
       <div className="flex justify-center w-60">
         {productId === "car_ins" &&
-            <div>Car Insurance Flow</div>
+            (<FormProvider>
+                <CarInsuranceForm/>
+            </FormProvider>)
         }
         {productId === "pet_ins" &&
-            <div>Pet Insurance Flow</div>
+            (<FormProvider>
+                <PetInsuranceForm/>
+            </FormProvider>)
         }
       </div>
     </div>
